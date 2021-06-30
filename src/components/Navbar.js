@@ -13,21 +13,22 @@ import {
   DropdownItem,
   NavbarText
 } from 'reactstrap';
+import logoutUser from '../api';
 
-const MainNav = (props) => {
+const MainNavbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Fitness Tracker App</NavbarBrand>
+      <Navbar color="light" className="px-5"light expand="md">
+        <NavbarBrand href="/">Fitness Tracker!</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Login</NavLink>
+              <NavLink href="/LoginRegister">Login</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/activities">Activities</NavLink>
@@ -41,14 +42,16 @@ const MainNav = (props) => {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  Choose Workout
+                  Choose a Workout
                 </DropdownItem>
                 <DropdownItem>
-                  Build Workout
+                  Build a Workout
                 </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>
-                  Reset
+                <DropdownItem
+                href="/logout"
+                onClick={<logoutUser/>}>
+                  Log Out
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
@@ -59,4 +62,4 @@ const MainNav = (props) => {
   );
 }
 
-export default MainNav;
+export default MainNavbar;
